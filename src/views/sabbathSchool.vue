@@ -16,11 +16,11 @@
   </div>
 </template>
 <script>
-import { readingMorning } from '../helper/parse';
+import { readingMorning } from '../helper/parse'
 import  DotLoader from 'vue-spinner/src/DotLoader.vue'
 
 export default {
-  name: 'Morning',
+  name: 'Sabbath-school',
   data(){
     return {
       readArray: [],
@@ -36,7 +36,7 @@ export default {
     readingMorning,
   },
   async created() {
-    this.readArray = await this.readingMorning(0),
+    this.readArray = await this.readingMorning(2),
     this.loading = false
   }
 }

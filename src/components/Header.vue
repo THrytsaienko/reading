@@ -6,12 +6,6 @@
             :to="route.path"
             >{{ route.name }}</router-link> 
         </li>
-        <!-- <li class="header__item">
-            <router-link class="header__item-link" to="/evening">Вечернее чтение</router-link> 
-        </li>
-        <li class="header__item">
-            <router-link class="header__item-link" to="/info">Инфо</router-link>
-        </li> -->
     </ul>
 </template>
 
@@ -22,27 +16,27 @@ export default {
     data() {
         return{
             routes: [
-        {
-            path: '/',
-            name: 'Утренние чтение'
-        },
-        // {
-        //     path: '/sabbath-school',
-        //     name: 'Субботняя школа'
-        // },
-        {
-            path: '/evening',
-            name: 'Вечерние чтение'
-        },
-        // {
-        //     path: '/bible',
-        //     name: 'Библия'
-        // },
-        {
-            path: '/info',
-            name: 'Информация'
-        }
-    ]
+                {
+                    path: '/',
+                    name: 'Утренние чтение'
+                },
+                {
+                    path: '/sabbath-school',
+                    name: 'Субботняя школа'
+                },
+                {
+                    path: '/evening',
+                    name: 'Вечерние чтение'
+                },
+                {
+                    path: '/bible',
+                    name: 'Библия'
+                },
+                {
+                    path: '/info',
+                    name: 'Информация'
+                }
+            ]
         }
     }
 }

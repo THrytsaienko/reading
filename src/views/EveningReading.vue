@@ -1,33 +1,53 @@
 <template>
-     <div>
-        <h1 class="title">  {{ readArray.title }}  </h1>
-        <p class="verse">  {{ readArray.verse }}   </p>
-        <p class="content"> {{ readArray.content }} </p>
+  <div>
+    <dot-loader 
+    :loading="loading" 
+    :color="color" 
+    :size="size"
+    class="spinner"
+    ></dot-loader>
+    <div v-if="!loading">
+      <div v-if="readArray">
+        <h1 class="title"> {{ readArray.attributes.title }} </h1>
+        <p class="verse"> {{ readArray.attributes.verse }} </p>
+        <p class="content"> {{ readArray.attributes.content }} </p>
+      </div>
     </div>
+  </div>
 </template>
-
 <script>
 import { readingMorning } from '../helper/parse'
+import  DotLoader from 'vue-spinner/src/DotLoader.vue'
 
 export default {
-  name: 'Evening',
+  name: 'Sabbath-school',
   data(){
     return {
       readArray: [],
-      
+      size: '50px',
+      color: '#1a73e8',
+      loading: true,
     }
   },
+  components: {
+    DotLoader,
+  },
   methods: {
-    readingMorning
+    readingMorning,
   },
   async created() {
-    this.readArray = await this.readingMorning()
-    console.log(this.$route.path)
+    this.readArray = await this.readingMorning(1),
+    this.loading = false
   }
 }
 </script>
-
 <style scoped>
+    .spinner{
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .title{
       text-align: center;
       padding: 20px;
@@ -39,6 +59,7 @@ export default {
       max-width: 820px;
       padding: 10px 0;
       font-size: 18px;
+      font-weight: 500;
     }
     .content{
         padding: 20px 40px;

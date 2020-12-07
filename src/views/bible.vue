@@ -9,18 +9,17 @@
     <div v-if="!loading">
       <div v-if="readArray">
         <h1 class="title"> {{ readArray.attributes.title }} </h1>
-        <p class="verse"> {{ readArray.attributes.verse }} </p>
         <p class="content"> {{ readArray.attributes.content }} </p>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { readingMorning } from '../helper/parse';
+import { readingMorning } from '../helper/parse'
 import  DotLoader from 'vue-spinner/src/DotLoader.vue'
 
 export default {
-  name: 'Morning',
+  name: 'Sabbath-school',
   data(){
     return {
       readArray: [],
@@ -36,7 +35,7 @@ export default {
     readingMorning,
   },
   async created() {
-    this.readArray = await this.readingMorning(0),
+    this.readArray = await this.readingMorning(3),
     this.loading = false
   }
 }
@@ -53,17 +52,10 @@ export default {
       padding: 20px;
       font-size: 40px;
     }
-    .verse{
-      text-align: center;
-      margin: 0 auto;
-      max-width: 820px;
-      padding: 10px 0;
-      font-size: 18px;
-      font-weight: 500;
-    }
     .content{
         padding: 20px 40px;
         font-size: 18px;
+        font-weight: 500;
     }
     div{
         min-height: 100vh;
