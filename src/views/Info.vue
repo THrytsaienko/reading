@@ -16,7 +16,7 @@ export default {
 
 <style>
     .info{
-        min-height: 100vh;
+        min-height: 85vh;
         display: flex;
         justify-content: center;
         padding: 30px 24px;

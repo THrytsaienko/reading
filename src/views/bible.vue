@@ -58,6 +58,6 @@ export default {
         font-weight: 500;
     }
     div{
-        min-height: 100vh;
+        min-height: 85vh;
     }
 </style>

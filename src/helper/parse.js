@@ -19,7 +19,7 @@
 import Parse from 'parse/dist/parse.min.js';
 
 Parse.initialize("PhQOygS9Uv2sd3gWbvxI");
-Parse.serverURL = 'http://reading.alekoleg.com:8080/api/parse'
+Parse.serverURL = '//reading.alekoleg.com:8080/api/parse'
 
 
 export const readingMorning = async (myType) => {
