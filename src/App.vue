@@ -9,7 +9,7 @@
 
 <script>
 import Header from './components/Header'
-import './http/index'
+
 export default {
   name: 'app',
   components: {

@@ -1,19 +1,22 @@
 <template>
-  <div>
+<div>
+  <div class="sabath-school">
     <dot-loader 
     :loading="loading" 
     :color="color" 
     :size="size"
-    class="spinner"
+    class="sabath-school__spinner"
     ></dot-loader>
     <div v-if="!loading">
       <div v-if="readArray">
-        <h1 class="title"> {{ readArray.attributes.title }} </h1>
-        <p class="verse"> {{ readArray.attributes.verse }} </p>
-        <p class="content"> {{ readArray.attributes.content }} </p>
+        <h1 class="sabath-school__title"> {{ readArray.attributes.title }} </h1>
+        <p class="sabath-school__verse"> {{ verse }} </p>
+        <p class="sabath-school__content"> {{ content }} </p>
       </div>
     </div>
   </div>
+</div>
+  
 </template>
 <script>
 import { readingMorning } from '../helper/parse'
@@ -27,6 +30,8 @@ export default {
       size: '50px',
       color: '#1a73e8',
       loading: true,
+      verse: ' ',
+      content: ' '
     }
   },
   components: {
@@ -37,35 +42,39 @@ export default {
   },
   async created() {
     this.readArray = await this.readingMorning(2),
-    this.loading = false
+    this.loading = false,
+    this.verse = this.readArray.attributes.verse.replace( /(<([^>]+)>)/g, ''),
+    this.content = this.readArray.attributes.content.replace( /(<([^>]+)>)/g, '')
   }
 }
 </script>
-<style scoped>
-    .spinner{
+<style scoped lang="scss">
+    .sabath-school{
+      &__spinner{
       padding: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    .title{
-      text-align: center;
-      padding: 20px;
-      font-size: 40px;
-    }
-    .verse{
-      text-align: center;
-      margin: 0 auto;
-      max-width: 820px;
-      padding: 10px 0;
-      font-size: 18px;
-      font-weight: 500;
-    }
-    .content{
-        padding: 20px 40px;
+      &__title{
+        text-align: center;
+        padding: 20px;
+        font-size: 40px;
+      }
+      &__verse{
+        text-align: center;
+        margin: 0 auto;
+        max-width: 820px;
+        padding: 10px 0;
         font-size: 18px;
-    }
-    div{
-        min-height: 100vh;
-    }
+        font-weight: 500;
+      }
+      &__content{
+          padding: 20px 40px;
+          font-size: 18px;
+      }
+  }
+  div{
+    min-height: 100vh;
+  }
 </style>
