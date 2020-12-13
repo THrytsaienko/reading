@@ -1,12 +1,15 @@
 <template>
-    <ul class="header">
-        <li class="header__item" v-for="route in routes" :key="route.name">
-            <router-link 
-            class="header__item-link" 
-            :to="route.path"
-            >{{ route.name }}</router-link> 
-        </li>
-    </ul>
+    <div class="header">
+        <ul class="header__list">
+            <li class="header__item" v-for="route in routes" :key="route.name">
+                <router-link 
+                class="header__item-link" 
+                :to="route.path"
+                >{{ route.name }}</router-link> 
+            </li>
+        </ul>
+    </div>
+    
 </template>
 
 <script>
@@ -44,11 +47,14 @@ export default {
 
 <style lang="scss" scoped>
     .header{
-        padding: 30px;
-        background-color: #1a73e8;
-        // @include flex(center, center);
-        display: flex;
-        justify-content: center;
+        position: relative;
+        &__list{
+            padding: 30px;
+            background-color: #1a73e8;
+            // @include flex(center, center);
+            display: flex;
+            justify-content: center;
+        }
         &__item{
             text-align: center;
             display: flex;
