@@ -1,25 +1,25 @@
 <template>
   <div class="app">
     <div id="nav">
-      <Header />
+      <The-header />
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Header from './components/Header'
+import TheHeader from "./components/TheHeader";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    Header
-  }
-}
+    TheHeader,
+  },
+};
 </script>
 
 <style lang="scss">
-  .app{
-    background-color: #fbfbfd;
-  }
+.app {
+  background-color: #fbfbfd;
+}
 </style>
