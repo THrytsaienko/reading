@@ -3,8 +3,8 @@
     <div class="reading">
       <dot-loader
         :loading="loading"
-        :color="color"
-        :size="size"
+        color="#1a73e8"
+        :size="50"
         class="reading__spinner"
       ></dot-loader>
       <div v-if="!loading">
@@ -39,6 +39,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { readingMorning } from "../helper/parse";
 import DotLoader from "vue-spinner/src/DotLoader.vue";
@@ -49,17 +50,14 @@ export default {
   data() {
     return {
       readArray: [],
-      size: "50px",
-      color: "#1a73e8",
-      loading: true,
       verse: " ",
       content: " ",
+
       visible: false,
+      loading: true,
       date: new Date(),
-      calendarDay: " ",
       modelConfig: {
         type: "nubmer",
-        // mask: "YYYY-MM-DD", // Uses 'iso' if missing
       },
     };
   },
@@ -72,23 +70,19 @@ export default {
     },
   },
   components: {
-    DotLoader,
     DatePicker,
+    DotLoader
   },
   methods: {
     readingMorning,
-    // readingDate,
     showCalendar() {
       this.visible = true;
     },
-    // hideCalendar() {
-    //   this.visible = false;
-    // },
     modalCalendar() {
       this.visible = !this.visible;
     },
   },
-  async mounted() {
+  async created() {
     (this.readArray = await this.readingMorning(0, this.date)),
       (this.loading = false),
       (this.verse = this.readArray.attributes.verse.replace(/(<([^>]+)>)/g, "")),
@@ -96,6 +90,7 @@ export default {
   },
 };
 </script>
+
 <style scoped lang="scss">
 .reading {
   min-height: 85vh;

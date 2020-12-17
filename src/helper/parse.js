@@ -14,12 +14,6 @@ Parse.initialize("PhQOygS9Uv2sd3gWbvxI");
 Parse.serverURL = '//reading.alekoleg.com:8080/api/parse'
 
 
-// export const readingDate = () => {
-    
-// }
-// readingDate()
-// console.log(readingDate())
-
 export const readingMorning = async (type, date) => {
     const morning = Parse.Object.extend("Morning");
     const query = new Parse.Query(morning);
@@ -28,10 +22,8 @@ export const readingMorning = async (type, date) => {
     if(date == null || date == undefined){
         date = new Date();
     }
-    
     const prevDate = new Date(date);
     prevDate.setDate(prevDate.getDate() - 1);
-
     query.greaterThan("date", prevDate);
     query.lessThanOrEqualTo("date", date);
     const results = await query.find();
