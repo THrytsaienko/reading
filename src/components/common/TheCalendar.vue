@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <div class="readind__calendar-icon" @click="modalCalendar">
-            <span class="calendar-day">{{ date.getUTCDate() }}</span>
+    <div class="calendar">
+        <div class="calendar__icon" @click="modalCalendar">
+            <span class="calendar__day">{{ date.getUTCDate() }}</span>
             <svg
               id="calendar"
               enable-background="new 0 0 512 512"
@@ -17,8 +17,8 @@
             </svg>
           </div>
 
-          <div class="the-calendar" v-if="visible">
-            <div class="the-calendar__block">
+          <div class="calendar__prev" v-if="visible">
+            <div class="calendar__block">
               <date-picker mode="date" v-model="date" :model-config="modelConfig" />
             </div>
           </div>
@@ -30,8 +30,10 @@
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 
 export default {
+  name: 'TheCalendar',
     data() {
         return {
+            visible: false,
             date: new Date(),
             modelConfig: {
                 type: "nubmer",
@@ -40,18 +42,37 @@ export default {
     },
     components: {
         DatePicker
-    }
+    },
+    methods: {
+        showCalendar() {
+        this.visible = true;
+        },
+        modalCalendar() {
+        this.visible = !this.visible;
+        },
+    },
 }
 </script>
 
 <style lang="scss" scoped>
-     .reading{
-        &__calendar-icon {
+     .calendar{
+        position: absolute;
+        top: 110px;
+        left: 40px;
+        &__icon {
             width: 30px;
             position: absolute;
-            top: 130px;
-            left: 40px;
             cursor: pointer;
-        }   
+        }  
+        &__day {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        } 
+        &__block {
+            position: absolute;
+            top: 33px;
+        }
      }
 </style>

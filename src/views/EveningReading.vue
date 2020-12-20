@@ -9,9 +9,10 @@
     ></dot-loader>
     <div v-if="!loading">
       <div v-if="readArray">
-        <h1 class="evening__title"> {{ readArray.attributes.title }} </h1>
-        <p class="evening__verse"> {{ verse }} </p>
-        <p class="evening__content"> {{ content }} </p>
+        <the-calendar/>
+        <the-title> {{ readArray.attributes.title }} </the-title>
+        <the-verse>{{ verse }}</the-verse>
+        <the-content> {{ content }} </the-content>
       </div>
     </div>
   </div>
@@ -21,6 +22,10 @@
 <script>
 import { readingMorning } from '../helper/parse'
 import  DotLoader from 'vue-spinner/src/DotLoader.vue'
+import TheCalendar from '../components/common/TheCalendar.vue'
+import TheTitle from '../components/common/TheTitle.vue'
+import TheVerse from '../components/common/TheVerse.vue'
+import TheContent from '../components/common/TheContent.vue'
 
 export default {
   name: 'Sabbath-school',
@@ -36,6 +41,10 @@ export default {
   },
   components: {
     DotLoader,
+    TheCalendar,
+    TheTitle,
+    TheVerse,
+    TheContent,
   },
   methods: {
     readingMorning,
@@ -50,31 +59,14 @@ export default {
 </script>
 <style scoped lang="scss">
     .evening{
+      padding: 20px 40px;
+      min-height: 85vh;
       &__spinner{
         padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
-      &__title{
-        text-align: center;
-        padding: 20px;
-        font-size: 40px;
-      }
-      &__verse{
-        text-align: center;
-        margin: 0 auto;
-        max-width: 820px;
-        padding: 10px 0;
-        font-size: 18px;
-        font-weight: 500;
-      }
-      &__content{
-          padding: 20px 40px;
-          font-size: 18px;
-      }
-  }
-  div{
-    min-height: 85vh;
   }
 </style>

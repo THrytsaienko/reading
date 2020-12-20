@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bible">
     <dot-loader 
     :loading="loading" 
     :color="color" 
@@ -8,8 +8,9 @@
     ></dot-loader>
     <div v-if="!loading">
       <div v-if="readArray">
-        <h1 class="title"> {{ readArray.attributes.title }} </h1>
-        <p class="content"> {{ readArray.attributes.content }} </p>
+        <the-calendar/>
+        <the-title> {{ readArray.attributes.title }} </the-title>
+        <the-content> {{ readArray.attributes.content }} </the-content>
       </div>
     </div>
   </div>
@@ -17,6 +18,9 @@
 <script>
 import { readingMorning } from '../helper/parse'
 import  DotLoader from 'vue-spinner/src/DotLoader.vue'
+import TheCalendar from '../components/common/TheCalendar.vue'
+import TheTitle from '../components/common/TheTitle.vue'
+import TheContent from '../components/common/TheContent.vue'
 
 export default {
   name: 'Sabbath-school',
@@ -30,6 +34,9 @@ export default {
   },
   components: {
     DotLoader,
+    TheCalendar,
+    TheTitle,
+    TheContent,
   },
   methods: {
     readingMorning,
@@ -43,21 +50,13 @@ export default {
 <style scoped>
     .spinner{
       padding: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
-    .title{
-      text-align: center;
-      padding: 20px;
-      font-size: 40px;
-    }
-    .content{
-        padding: 20px 40px;
-        font-size: 18px;
-        font-weight: 500;
-    }
-    div{
-        min-height: 85vh;
+    .bible{
+      min-height: 85vh;
+      padding: 20px 40px;
     }
 </style>
